@@ -1,0 +1,143 @@
+{
+    "update_id": 749155815,
+    "message": {
+        "message_id": 32,
+        "from": {
+            "id": 7619391895,
+            "is_bot": false,
+            "first_name": "Evan",
+            "username": "evan20241202",
+            "language_code": "zh-hans"
+        },
+        "chat": {
+            "id": 7619391895,
+            "first_name": "Evan",
+            "username": "evan20241202",
+            "type": "private"
+        },
+        "date": 1734142875,
+        "text": "/"
+    }
+}
+{
+    "update_id": 749155812,
+    "message": {
+        "message_id": 29,
+        "from": {
+            "id": 7619391895,
+            "is_bot": false,
+            "first_name": "Evan",
+            "username": "evan20241202",
+            "language_code": "zh-hans"
+        },
+        "chat": {
+            "id": 7619391895,
+            "first_name": "Evan",
+            "username": "evan20241202",
+            "type": "private"
+        },
+        "date": 1734142838,
+        "text": "/?"
+    }
+}
+
+{
+    "update_id": 749155814,
+    "message": {
+        "message_id": 31,
+        "from": {
+            "id": 7619391895,
+            "is_bot": false,
+            "first_name": "Evan",
+            "username": "evan20241202",
+            "language_code": "zh-hans"
+        },
+        "chat": {
+            "id": 7619391895,
+            "first_name": "Evan",
+            "username": "evan20241202",
+            "type": "private"
+        },
+        "date": 1734142850,
+        "text": "/help",
+        "entities": [
+            {
+                "offset": 0,
+                "length": 5,
+                "type": "bot_command"
+            }
+        ]
+    }
+}
+
+{
+    "update_id": 749155816,
+    "message": {
+        "message_id": 33,
+        "from": {
+            "id": 7619391895,
+            "is_bot": false,
+            "first_name": "Evan",
+            "username": "evan20241202",
+            "language_code": "zh-hans"
+        },
+        "chat": {
+            "id": -4695010373,
+            "title": "\u673a\u5668\u4eba\u5f00\u53d1\u6d4b\u8bd5\u7fa4",
+            "type": "group",
+            "all_members_are_administrators": true
+        },
+        "date": 1734143980,
+        "text": "/help luck Evan",
+        "entities": [
+            {
+                "offset": 0,
+                "length": 5,
+                "type": "bot_command"
+            }
+        ]
+    }
+}
+
+{
+    "update_id": 749155817,
+    "message": {
+        "message_id": 35,
+        "from": {
+            "id": 7619391895,
+            "is_bot": false,
+            "first_name": "Evan",
+            "username": "evan20241202",
+            "language_code": "zh-hans"
+        },
+        "chat": {
+            "id": -4695010373,
+            "title": "\u673a\u5668\u4eba\u5f00\u53d1\u6d4b\u8bd5\u7fa4",
+            "type": "group",
+            "all_members_are_administrators": true
+        },
+        "date": 1734143984,
+        "text": "/?"
+    }
+}
+{
+    "update_id": 749155818,
+    "message": {
+        "message_id": 36,
+        "from": {
+            "id": 7619391895,
+            "is_bot": false,
+            "first_name": "Evan",
+            "username": "evan20241202",
+            "language_code": "zh-hans"
+        },
+        "chat": {
+            "id": -4695010373,
+            "title": "\u673a\u5668\u4eba\u5f00\u53d1\u6d4b\u8bd5\u7fa4",
+            "type": "group",
+            "all_members_are_administrators": true
+        },
+        "date": 1734143986,
+        "text": "//"
+    }
+}
