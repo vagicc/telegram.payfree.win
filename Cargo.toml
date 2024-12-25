@@ -45,7 +45,7 @@ teloxide = { version = "0.13", features = ["macros"] }
 # 日志
 env_logger = "0.10.0"
 # env_logger = "0.11.5"   #这个最新的好像不行
-log = "0.4.22
+log = "0.4.22"
 pretty_env_logger = "0.5.0"  #这个没有使用到了
 
 # 随机库
