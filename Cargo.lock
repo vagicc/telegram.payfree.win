@@ -1982,10 +1982,12 @@ name = "telegram-bot-payfree"
 version = "0.1.0"
 dependencies = [
  "bigdecimal",
+ "bytes",
  "chrono",
  "diesel",
  "dotenv",
  "env_logger",
+ "futures-util",
  "handlebars",
  "ipnetwork",
  "lazy_static",
