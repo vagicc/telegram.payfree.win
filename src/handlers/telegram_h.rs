@@ -31,7 +31,6 @@ enum Command {
     UsernameAndAge { username: String, age: u8 },
     #[command(description = "查询商户配置情")]
     Cmc,
-    
 }
 
 async fn answer(bot: Arc<Bot>, msg: Message, cmd: Command) -> ResponseResult<()> {
@@ -87,6 +86,10 @@ pub async fn webhook(update: Update, bot: Arc<Bot>) -> std::result::Result<impl 
                     // Handle the case where the command is not recognized
                     log::error!("这里接收到的是未定义的命令：{:#?}", error);
                     log::info!("Command not recognized");
+
+                    let _k = bot
+                        .send_message(message.chat.id, Command::descriptions().to_string())
+                        .await;
                 }
             }
             // let kd=message.chat.id;``
