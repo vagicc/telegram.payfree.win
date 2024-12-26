@@ -29,6 +29,9 @@ enum Command {
     Username(String),
     #[command(description = "handle a username and an age.", parse_with = "split")]
     UsernameAndAge { username: String, age: u8 },
+    #[command(description = "查询商户配置情")]
+    Cmc,
+    
 }
 
 async fn answer(bot: Arc<Bot>, msg: Message, cmd: Command) -> ResponseResult<()> {
@@ -51,6 +54,17 @@ async fn answer(bot: Arc<Bot>, msg: Message, cmd: Command) -> ResponseResult<()>
             )
             .await?
         }
+        Command::Cmc => {
+            bot.send_message(
+                msg.chat.id,
+                format!(" 查询商户配置情况  查看商户代收代付的配置情况"),
+            )
+            .await?
+        }
+        _ => {
+            bot.send_message(msg.chat.id, Command::descriptions().to_string())
+                .await?
+        }
     };
 
     Ok(())
@@ -60,7 +74,6 @@ pub async fn webhook(update: Update, bot: Arc<Bot>) -> std::result::Result<impl 
     log::debug!("访问了POST：“/telegram”");
 
     if let UpdateKind::Message(message) = update.kind {
-        
         if let Some(text) = message.text() {
             log::error!("用户发送的内容：{:#}", text);
             match Command::parse(text, "") {
