@@ -20,7 +20,7 @@ pub async fn new_html() -> std::result::Result<impl Reply, Rejection> {
                                 // Err(warp::reject::not_found())   //错误的返回状态码
 }
 
-#[derive(BotCommands, Clone)]
+#[derive(BotCommands, Clone, Debug)]
 #[command(rename_rule = "lowercase", description = "支持以下命令：")]
 enum Command {
     #[command(description = "帮助命令.")]
@@ -63,7 +63,7 @@ pub async fn webhook(update: Update, bot: Arc<Bot>) -> std::result::Result<impl 
         if let Some(text) = message.text() {
             match Command::parse(text, "") {
                 Ok(cmd) => {
-                    log::warn!("接收到的命令为：{}", cmd);
+                    log::warn!("接收到的命令为：{:#?}", cmd);
                     if let Err(e) = answer(bot, message, cmd).await {
                         log::error!("Error answering message: {:?}", e);
                     }
