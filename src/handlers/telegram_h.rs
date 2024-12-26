@@ -63,6 +63,7 @@ pub async fn webhook(update: Update, bot: Arc<Bot>) -> std::result::Result<impl 
         if let Some(text) = message.text() {
             match Command::parse(text, "") {
                 Ok(cmd) => {
+                    log::warn!("接收到的命令为：{}", cmd);
                     if let Err(e) = answer(bot, message, cmd).await {
                         log::error!("Error answering message: {:?}", e);
                     }
