@@ -60,7 +60,9 @@ pub async fn webhook(update: Update, bot: Arc<Bot>) -> std::result::Result<impl 
     log::debug!("访问了POST：“/telegram”");
 
     if let UpdateKind::Message(message) = update.kind {
+        
         if let Some(text) = message.text() {
+            log::error!("用户发送的内容：{:#}", text);
             match Command::parse(text, "") {
                 Ok(cmd) => {
                     log::warn!("接收到的命令为：{:#?}", cmd);
@@ -70,7 +72,7 @@ pub async fn webhook(update: Update, bot: Arc<Bot>) -> std::result::Result<impl 
                 }
                 Err(error) => {
                     // Handle the case where the command is not recognized
-                    log::error!("这里接收到的是未定义的命令：{:#?}",error);
+                    log::error!("这里接收到的是未定义的命令：{:#?}", error);
                     log::info!("Command not recognized");
                 }
             }
