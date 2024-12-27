@@ -35,7 +35,12 @@ pub async fn webhook(update: Update, bot: Arc<Bot>) -> std::result::Result<impl 
 
                     let _ = bot.send_dice(message.chat.id).await;
                     let _ = bot
-                        .send_message(chat_id, "<b>粗体文本</b>")
+                        .send_message(chat_id, "
+                        <b>粗体文本</b> 
+                        <a href=\"http://www.example.com/\">inline URL</a>
+                        <tg-emoji emoji-id=\"5368324170671202286\">👍</tg-emoji>
+
+                        ")
                         .parse_mode(ParseMode::Html)
                         .await
                         .log_on_error()
