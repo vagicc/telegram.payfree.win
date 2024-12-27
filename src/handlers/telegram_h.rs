@@ -35,7 +35,7 @@ pub async fn webhook(update: Update, bot: Arc<Bot>) -> std::result::Result<impl 
 
                     let _ = bot.send_dice(message.chat.id).await;
                     let _ = bot
-                        .send_message(chat_id, "<b>粗体文本</b><hr><span style=\"color: #ff0000;\">这是红色文本</span>")
+                        .send_message(chat_id, "<b>粗体文本</b><span style=\"color: #ff0000;\">这是红色文本</span>")
                         .parse_mode(ParseMode::Html)
                         .await
                         .log_on_error()
