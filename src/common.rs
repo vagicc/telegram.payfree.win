@@ -7,7 +7,7 @@ pub fn get_env(key: &str) -> String {
 }
 
 /* 打印变量与变量类型 */
-pub fn type_v<T>(t: T)
+pub fn _type_v<T>(t: T)
 where
     T: std::fmt::Debug,
 {
@@ -26,7 +26,7 @@ where
 /// let message = "成功".to_string();
 /// rresponse_json(status_code, Some(&data), None);
 /// ```
-pub fn response_json<T>(
+pub fn _response_json<T>(
     status: warp::http::StatusCode,
     data: Option<&T>,
     message: Option<String>,
@@ -116,7 +116,7 @@ where
 }
 
 /* 产生随机字符串 */
-pub fn random_key(len: usize) -> String {
+pub fn _random_key(len: usize) -> String {
     use rand::distributions::Alphanumeric;
     use rand::thread_rng;
     use rand::Rng;
@@ -131,7 +131,7 @@ pub fn random_key(len: usize) -> String {
  Unix 时间戳
 返回自 Unix 纪元（1970年1月1日 00:00:00 GMT）以来经过的秒数所测量的当前时间。
  */
-pub fn time() -> u64 {
+pub fn _time() -> u64 {
     use std::time::{SystemTime, UNIX_EPOCH};
 
     // 获取当前系统时间
@@ -148,7 +148,7 @@ pub fn time() -> u64 {
     timestamp
 }
 
-pub fn now_naive_date_time() -> chrono::NaiveDateTime {
+pub fn _now_naive_date_time() -> chrono::NaiveDateTime {
     // use chrono::prelude::{Local, NaiveDate, NaiveDateTime};
     let fmt = "%Y-%m-%d %H:%M:%S";
     let now = chrono::prelude::Local::now();
@@ -162,7 +162,7 @@ pub fn now_naive_date_time() -> chrono::NaiveDateTime {
     return now_date_time;
 }
 
-pub fn now_naive_date() -> chrono::NaiveDate {
+pub fn _now_naive_date() -> chrono::NaiveDate {
     // use chrono::prelude::{Local, NaiveDate, NaiveDateTime};
     let fmt = "%Y-%m-%d";
     let now = chrono::prelude::Local::now();

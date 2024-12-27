@@ -1,9 +1,6 @@
 /target
-src/main_one.rs
-src/main-error.rs
-src/main copy.rs
-src/mail.rs.yl
 src/testkk.rs
 src/.DS_Store
 .DS_Store
 .env
+run.txt

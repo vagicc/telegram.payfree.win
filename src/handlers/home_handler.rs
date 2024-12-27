@@ -1,7 +1,7 @@
-use handlebars::{to_json, Handlebars};
+// use handlebars::{to_json, Handlebars};
 use warp::{Rejection, Reply};
 // use crate::template::to_html_base;
-use serde_json::value::Map;
+// use serde_json::value::Map;
 // use crate::template::view;
 
 // type ResultWarp<T> = std::result::Result<T, Rejection>;
@@ -20,7 +20,7 @@ use serde_json::value::Map;
 pub async fn index() -> std::result::Result<impl Reply, Rejection> {
     log::warn!("[测试]：{:#?}","kkk");
 
-    let mut data = Map::new();
+    // let mut data = Map::new();
     // let html = to_html_base("home.html", data);
 
     // let html = view("index.html", data, session);
