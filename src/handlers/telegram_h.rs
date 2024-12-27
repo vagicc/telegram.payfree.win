@@ -34,11 +34,17 @@ pub async fn webhook(update: Update, bot: Arc<Bot>) -> std::result::Result<impl 
                     log::warn!("聊天ID：{:#?}", chat_id);
 
                     let _ = bot.send_dice(message.chat.id).await;
+                    //消息只支持这些html：https://core.telegram.org/bots/api#formatting-options
                     let _ = bot
                         .send_message(chat_id, "
                         <b>粗体文本</b> 
                         <a href=\"http://www.example.com/\">inline URL</a>
                         <tg-emoji emoji-id=\"5368324170671202286\">👍</tg-emoji>
+<code>inline fixed-width code</code>
+<pre>pre-formatted fixed-width code block</pre>
+<pre><code class=\"language-python\">pre-formatted fixed-width code block written in the Python programming language</code></pre>
+<blockquote>Block quotation started\nBlock quotation continued\nThe last line of the block quotation</blockquote>
+<blockquote expandable>Expandable block quotation started\nExpandable block quotation continued\nExpandable block quotation continued\nHidden by default part of the block quotation started\nExpandable block quotation continued\nThe last line of the block quotation</blockquote>
 
                         ")
                         .parse_mode(ParseMode::Html)
