@@ -2,6 +2,7 @@ use crate::telegram::answer;
 use crate::telegram::Command;
 use std::sync::Arc;
 use teloxide::prelude::*;
+use teloxide::types::ParseMode;
 use teloxide::types::Update;
 use teloxide::types::UpdateKind;
 use teloxide::utils::command::BotCommands;
@@ -32,8 +33,13 @@ pub async fn webhook(update: Update, bot: Arc<Bot>) -> std::result::Result<impl 
                     let chat_id = message.chat.id;
                     log::warn!("聊天ID：{:#?}", chat_id);
 
-                    let _=bot.send_dice(message.chat.id).await;
-                    
+                    let _ = bot.send_dice(message.chat.id).await;
+                    let _ = bot
+                        .send_message(chat_id, "<b>粗体文本</b><br><hr><span style=\"color: #ff0000;\">这是红色文本</span>")
+                        .parse_mode(ParseMode::Html)
+                        .await
+                        .log_on_error()
+                        .await;
                     let _k = bot
                         .send_message(message.chat.id, Command::descriptions().to_string())
                         .await;
