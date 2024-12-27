@@ -37,20 +37,13 @@ pub async fn answer(bot: Arc<Bot>, msg: Message, cmd: Command) -> ResponseResult
             .await?
         }
         Command::Cmc => {
-            bot.send_message(
-                msg.chat.id,
-                format!(" 查询商户配置情况  查看商户代收代付的配置情况"),
-            )
-            .await?
-        }
-        _ => {
-            let title = msg.chat.title();
-            log::warn!("聊天标题：{:#?}", title);
-            let chat_id = msg.chat_id();
-            log::warn!("聊天ID：{:#?}", chat_id);
-
-            bot.send_message(msg.chat.id, Command::descriptions().to_string())
-                .await?
+            let k = bot
+                .send_message(
+                    msg.chat.id,
+                    format!(" 查询商户配置情况  查看商户代收代付的配置情况"),
+                )
+                .await?;
+            k
         }
     };
 

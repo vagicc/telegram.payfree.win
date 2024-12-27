@@ -32,6 +32,8 @@ pub async fn webhook(update: Update, bot: Arc<Bot>) -> std::result::Result<impl 
                     let chat_id = message.chat.id;
                     log::warn!("聊天ID：{:#?}", chat_id);
 
+                    let _=bot.send_dice(message.chat.id).await;
+                    
                     let _k = bot
                         .send_message(message.chat.id, Command::descriptions().to_string())
                         .await;
