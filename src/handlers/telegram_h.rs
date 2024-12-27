@@ -9,6 +9,8 @@ use warp::{Rejection, Reply};
 
 pub async fn webhook(update: Update, bot: Arc<Bot>) -> std::result::Result<impl Reply, Rejection> {
     log::debug!("访问了POST：“/telegram”");
+    log::info!("update:{:#?}", update);
+    log::info!("bot:{:#?}", bot);
 
     if let UpdateKind::Message(message) = update.kind {
         if let Some(text) = message.text() {
@@ -24,6 +26,11 @@ pub async fn webhook(update: Update, bot: Arc<Bot>) -> std::result::Result<impl 
                     // Handle the case where the command is not recognized
                     log::error!("这里接收到的是未定义的命令：{:#?}", error);
                     log::info!("Command not recognized");
+
+                    let title = message.chat.title();
+                    log::warn!("聊天标题：{:#?}", title);
+                    let chat_id = message.chat.id;
+                    log::warn!("聊天ID：{:#?}", chat_id);
 
                     let _k = bot
                         .send_message(message.chat.id, Command::descriptions().to_string())
@@ -48,5 +55,5 @@ pub async fn webhook(update: Update, bot: Arc<Bot>) -> std::result::Result<impl 
 
     // let html = "kkads";
     // Ok(warp::reply::html(html)) //直接返回html
-                                // Err(warp::reject::not_found())   //错误的返回状态码
+    // Err(warp::reject::not_found())   //错误的返回状态码
 }
