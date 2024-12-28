@@ -1,8 +1,12 @@
 use crate::telegram::answer;
 use crate::telegram::Command;
+use teloxide::payloads::SendMessage;
+use teloxide::{
+    prelude::*,
+    types::{Message, ParseMode, ReplyParameters},
+};
+
 use std::sync::Arc;
-use teloxide::prelude::*;
-use teloxide::types::ParseMode;
 use teloxide::types::Update;
 use teloxide::types::UpdateKind;
 use teloxide::utils::command::BotCommands;
@@ -33,6 +37,35 @@ pub async fn webhook(update: Update, bot: Arc<Bot>) -> std::result::Result<impl 
                     let chat_id = message.chat.id;
                     log::warn!("聊天ID：{:#?}", chat_id);
 
+                    // 创建一个 ReplyParameters，用于引用原消息
+                    let reply_params = ReplyParameters::new(message.id);
+
+                    // 创建一个 SendMessage 请求，手动初始化所有字段
+                    let send_message = SendMessage {
+                        // chat_id: message.chat.id,                  // 必填字段：聊天 ID
+                        chat_id: teloxide::types::Recipient::Id(message.chat.id),
+
+                        text: "这是一个回复消息".to_string(), // 必填字段：消息文本
+                        parse_mode: Some(ParseMode::Markdown), // 可选字段：Markdown 格式
+                        reply_parameters: Some(reply_params), // 可选字段：引用原消息
+                        message_thread_id: None,              // 可选字段：消息线程 ID
+                        entities: None, // 可选字段：消息实体（如加粗、链接等）
+                        link_preview_options: None, // 可选字段：链接预览选项
+                        disable_notification: None, // 可选字段：禁用通知
+                        protect_content: None, // 可选字段：保护内容
+                        reply_markup: None, // 可选字段：自定义键盘或强制回复
+                    };
+
+                    // 发送消息
+                    bot.send_message(
+                        send_message.chat_id, // 必填字段：聊天 ID
+                        send_message.text,    // 必填字段：消息文本
+                    )
+                    .parse_mode(send_message.parse_mode.unwrap_or(ParseMode::Markdown)) // 可选字段：Markdown 格式
+                    .await
+                    .log_on_error()
+                    .await;
+
                     let _ = bot.send_dice(message.chat.id).await;
                     //消息只支持这些html：https://core.telegram.org/bots/api#formatting-options
                     let _ = bot
@@ -51,6 +84,13 @@ pub async fn webhook(update: Update, bot: Arc<Bot>) -> std::result::Result<impl 
                         .await
                         .log_on_error()
                         .await;
+                    // bot.send_message(message.chat.id, "这是回复！")
+                    //     .reply_to_message_id(message.id) // 正确用法
+                    //     .send()
+                    //     .await;
+
+                    // 创建一个 SendMessage 请求
+
                     let _k = bot
                         .send_message(message.chat.id, Command::descriptions().to_string())
                         .await;
