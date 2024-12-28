@@ -38,6 +38,15 @@ pub async fn webhook(update: Update, bot: Arc<Bot>) -> std::result::Result<impl 
                     log::warn!("聊天ID：{:#?}", chat_id);
 
                     // 创建一个 ReplyParameters，用于引用原消息
+                    let reply_parameters = ReplyParameters::new(message.id);
+
+                    bot.send_message(message.chat.id, "111这是回复！")
+                        .reply_parameters(reply_parameters)
+                        .parse_mode(ParseMode::Html)
+                        .await
+                        .log_on_error()
+                        .await;
+
                     let reply_params = ReplyParameters::new(message.id);
 
                     // 创建一个 SendMessage 请求，手动初始化所有字段
