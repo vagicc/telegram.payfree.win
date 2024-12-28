@@ -1,4 +1,7 @@
 
+Go语言：
+Go语言圣经（中文版） https://books.studygolang.com/gopl-zh/
+
 telegram聊天机器人文档：
 https://core.telegram.org/bots/api
 https://core.telegram.org/api
